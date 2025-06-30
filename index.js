@@ -5,7 +5,7 @@ const productRoutes = require('./routes/product.route');
 app.use(express.json());
 app.use('/api', productRoutes);
 
-app.get('/test', (req, res) => {
+app.get('/', (req, res) => {
   res.status(200).json({ message: '✅ Server is running successfully!' });
 });
 
