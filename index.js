@@ -5,7 +5,11 @@ const productRoutes = require('./routes/product.route');
 app.use(express.json());
 app.use('/api', productRoutes);
 
+app.get('/test', (req, res) => {
+  res.status(200).json({ message: '✅ Server is running successfully!' });
+});
+
 const PORT = 3000;
-app.listen(3000 || PORT, () => {
+app.listen(PORT, () => {
   console.log(`✅ Server is running on http://localhost:${PORT}`);
 });
