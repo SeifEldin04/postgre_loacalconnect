@@ -11,4 +11,21 @@ const getProducts = async (req, res) => {
   }
 };
 
-module.exports = { getProducts };
+const createProduct = async (req, res) => {
+  const { name, price } = req.body;
+  try {
+    const result = await pool.query(
+      'INSERT INTO products (name, price) VALUES ($1, $2) RETURNING *',
+      [name, price]
+    );
+    res.status(201).json(result.rows[0]); // ✅ json response
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+module.exports = {
+  getProducts,
+  createProduct
+};
