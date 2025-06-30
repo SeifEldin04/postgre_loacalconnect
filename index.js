@@ -3,11 +3,11 @@ const app = express();
 const productRoutes = require('./routes/product.route');
 
 app.use(express.json());
-app.use('/api', productRoutes);
+app.use('/', productRoutes);
 
-app.get('/', (req, res) => {
-  res.status(200).json({ message: '✅ Server is running successfully!' });
-});
+// app.get('/', (req, res) => {
+//   res.status(200).json({ message: '✅ Server is running successfully!' });
+// });
 
 const PORT = 3000;
 app.listen(PORT, () => {
